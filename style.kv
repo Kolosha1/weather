@@ -1,0 +1,87 @@
+<WeatherCard>:
+    padding: 4
+    size_hint: (0.9,1)
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    MDBoxLayout:
+        size_hint: (1,1)
+        orientation: 'vertical'
+        padding: '20sp'
+        pos_hint: {"center_y": 0.5}
+        MDLabel:
+            id: date_time
+            text: "Зараз"
+            font_style: 'Body1'
+            halign: "center"        
+        AsyncImage:
+            id: image
+            source: 'https://openweathermap.org/img/wn/10d@2x.png'
+            size_hint: (None,None)
+            size: ("100sp","100sp")
+            fit_mode: 'contain' 
+        MDLabel:
+            id: temp
+            text: "25 °C"
+            font_style: 'H4'
+            halign: "center"
+        MDLabel:
+            id: desc
+            text: "Ясно"
+            font_style: 'H4'
+            halign: "center"
+        MDLabel:
+            id: temp_like
+            text: "Відчувається як 30 °C"
+            font_style: 'Subtitle2'
+            halign: "center"
+        MDLabel:
+            id: wind_speed
+            text: "Швидкість вітру: 5 м/c"
+            font_style: 'Subtitle2'
+            halign: "center"
+        MDLabel:
+            id: humidity
+            text: "Вологість 52%"
+            font_style: 'Subtitle2'
+            halign: "center"
+
+            
+            
+
+
+<HomeScreen>:
+    MDBoxLayout:
+        size_hint: (1,1)
+        orientation: 'vertical'
+        spacing: "20sp"
+
+        MDTopAppBar:
+            title: 'WeatherApp'
+            md_bg_color: "#602b7a"
+        MDBoxLayout:
+            size_hint: (1,0.8)
+            orientation: 'vertical'
+            spacing: "20sp"
+            pos_hint: {"center_x": 0.5}
+            padding: [0, "30sp", 0,0]
+
+            MDBoxLayout:
+                padding: "20sp"
+                spacing: "20sp"
+                size_hint: (1,None)
+                height: "40sp"
+
+                MDTextField:
+                    id: city_name
+                    hint_text: "Введіть місто"
+                    mode: "fill"
+
+                MDIconButton:
+                    id: search_btn
+                    icon: "magnify"
+                    md_bg_color: "#602b7a"
+                    on_press: root.search()
+
+            MDCarousel:
+                id: weather_carousel
+                direction: 'right'
+                size_hint: (1, 0.7)
